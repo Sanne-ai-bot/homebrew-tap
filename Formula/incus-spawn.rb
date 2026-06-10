@@ -17,7 +17,7 @@ class IncusSpawn < Formula
   depends_on arch: :arm64
 
   resource "git-remote-isx" do
-    url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/git-remote-isx"
+    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.0/git-remote-isx"
     sha256 "23dce674bcceed571f2c7760143d8bbf08aae1f903c3cf398f5256b0bf1cfa10"
   end
 
