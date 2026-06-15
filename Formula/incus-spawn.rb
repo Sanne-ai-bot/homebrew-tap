@@ -1,13 +1,13 @@
 class IncusSpawn < Formula
   desc "CLI tool for managing isolated Incus-based development environments"
   homepage "https://github.com/Sanne/incus-spawn"
-  version "0.2.4"
+  version "0.2.5"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-aarch64"
-      sha256 "d364f91fda20b0a380d597441d68548d3d725dee70f5596254926c60363fb497"
+      sha256 "5f64a538d63ba8b130a5c8b589967cf6cc1ae4bfbb26e05e66c8abf6466da129"
     else
       odie "incus-spawn only supports Apple Silicon (arm64) on macOS"
     end
@@ -17,7 +17,7 @@ class IncusSpawn < Formula
   depends_on arch: :arm64
 
   resource "git-remote-isx" do
-    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.4/git-remote-isx"
+    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.5/git-remote-isx"
     sha256 "23dce674bcceed571f2c7760143d8bbf08aae1f903c3cf398f5256b0bf1cfa10"
   end
 
