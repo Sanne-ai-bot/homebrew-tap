@@ -10,7 +10,7 @@ class IncusSpawn < Formula
       sha256 "bb0413d99c7b98f6b3a9729eef7055efaf07573bf9c59e2118163a9f718bc8e5"
     else
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-x86_64"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "e2b10800280a86dc0df9fea2b37ff5e6872efc789947eaa2db18538709f54497"
     end
   end
 
