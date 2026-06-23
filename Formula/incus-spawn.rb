@@ -9,12 +9,12 @@ class IncusSpawn < Formula
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-aarch64"
       sha256 "bb0413d99c7b98f6b3a9729eef7055efaf07573bf9c59e2118163a9f718bc8e5"
     else
-      odie "incus-spawn only supports Apple Silicon (arm64) on macOS"
+      url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-x86_64"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
     end
   end
 
   depends_on "vfkit"
-  depends_on arch: :arm64
 
   resource "git-remote-isx" do
     url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.12/git-remote-isx"
@@ -22,7 +22,11 @@ class IncusSpawn < Formula
   end
 
   def install
-    bin.install "incus-spawn-macos-aarch64" => "isx"
+    if Hardware::CPU.arm?
+      bin.install "incus-spawn-macos-aarch64" => "isx"
+    else
+      bin.install "incus-spawn-macos-x86_64" => "isx"
+    end
 
     resource("git-remote-isx").stage do
       bin.install "git-remote-isx"
