@@ -1,23 +1,23 @@
 class IncusSpawn < Formula
   desc "CLI tool for managing isolated Incus-based development environments"
   homepage "https://github.com/Sanne/incus-spawn"
-  version "0.2.12"
+  version "0.2.13"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-aarch64"
-      sha256 "bb0413d99c7b98f6b3a9729eef7055efaf07573bf9c59e2118163a9f718bc8e5"
+      sha256 "e85e93f484fc035fbbe863a5b90d7375bd955fbdc2bf01793d427e6941b0c61f"
     else
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-x86_64"
-      sha256 "e2b10800280a86dc0df9fea2b37ff5e6872efc789947eaa2db18538709f54497"
+      sha256 "5e3435b41dd1d826d898b35fb8306095ef2c46c2b70e1b4d0ac4db59093377b7"
     end
   end
 
   depends_on "vfkit"
 
   resource "git-remote-isx" do
-    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.12/git-remote-isx"
+    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.13/git-remote-isx"
     sha256 "23dce674bcceed571f2c7760143d8bbf08aae1f903c3cf398f5256b0bf1cfa10"
   end
 
