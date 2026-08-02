@@ -31,6 +31,8 @@ class IncusSpawn < Formula
     resource("git-remote-isx").stage do
       bin.install "git-remote-isx"
     end
+
+    generate_completions_from_executable(bin/"isx", "completion")
   end
 
   def caveats
