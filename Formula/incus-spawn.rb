@@ -22,7 +22,7 @@ class IncusSpawn < Formula
   end
 
   resource "completions" do
-    url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/completions.tar.gz"
+    url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.19/completions.tar.gz"
     sha256 "5c0cc7dd65193184b20ea4268f5606c86a1e3c9ed6aae9c1a95bb621fca0e45e"
   end
 
