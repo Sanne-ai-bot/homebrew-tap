@@ -21,6 +21,11 @@ class IncusSpawn < Formula
     sha256 "23dce674bcceed571f2c7760143d8bbf08aae1f903c3cf398f5256b0bf1cfa10"
   end
 
+  resource "completions" do
+    url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/completions.tar.gz"
+    sha256 "5c0cc7dd65193184b20ea4268f5606c86a1e3c9ed6aae9c1a95bb621fca0e45e"
+  end
+
   def install
     if Hardware::CPU.arm?
       bin.install "incus-spawn-macos-aarch64" => "isx"
@@ -32,7 +37,11 @@ class IncusSpawn < Formula
       bin.install "git-remote-isx"
     end
 
-    generate_completions_from_executable(bin/"isx", "completion")
+    resource("completions").stage do
+      bash_completion.install "isx.bash" => "isx"
+      zsh_completion.install "_isx"
+      fish_completion.install "isx.fish"
+    end
   end
 
   def caveats
