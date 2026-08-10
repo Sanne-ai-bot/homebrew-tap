@@ -1,5 +1,5 @@
-class IncusSpawn < Formula
-  desc "CLI tool for managing isolated Incus-based development environments"
+class IncusSpawnDev < Formula
+  desc "CLI tool for managing isolated Incus-based development environments (dev channel)"
   homepage "https://github.com/Sanne/incus-spawn"
   version "0.2.21"
   license "Apache-2.0"
@@ -15,6 +15,8 @@ class IncusSpawn < Formula
   end
 
   depends_on "vfkit"
+
+  conflicts_with "incus-spawn", because: "both install the `isx` binary"
 
   resource "isx-proxy" do
     on_macos do
@@ -67,21 +69,13 @@ class IncusSpawn < Formula
 
   def caveats
     <<~EOS
-      incus-spawn has been installed as 'isx'.
+      incus-spawn (dev) has been installed as 'isx'.
+
+      This is the development channel — expect frequent updates.
+      For the stable release, use: brew install Sanne/tap/incus-spawn
 
       First-time setup (required):
         isx init
-
-      This will:
-        - Generate MITM CA certificate
-        - Configure Claude API and GitHub credentials
-        - Install VM and proxy as macOS services (auto-start at login)
-
-      To build your first template:
-        isx build tpl-java
-
-      To launch the interactive TUI:
-        isx
 
       Documentation: https://github.com/Sanne/incus-spawn
     EOS
