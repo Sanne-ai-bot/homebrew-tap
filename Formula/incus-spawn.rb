@@ -8,23 +8,26 @@ class IncusSpawn < Formula
     if Hardware::CPU.arm?
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-aarch64"
       sha256 "d47951b2a25ed058c61824c502ffea8037ed89bfe16c3061f6f5ab45de23417b"
-
-      resource "isx-proxy" do
-        url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.21/isx-proxy-macos-aarch64"
-        sha256 "0000000000000000000000000000000000000000000000000000000000000000"
-      end
     else
       url "https://github.com/Sanne/incus-spawn/releases/download/v#{version}/incus-spawn-macos-x86_64"
       sha256 "7e0a6e6390478e3f5bacabda8c8bae69f9bc778018599bc53869f3d49e521ae3"
+    end
+  end
 
-      resource "isx-proxy" do
+  depends_on "vfkit"
+
+  resource "isx-proxy" do
+    on_macos do
+      on_arm do
+        url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.21/isx-proxy-macos-aarch64"
+        sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      end
+      on_intel do
         url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.21/isx-proxy-macos-x86_64"
         sha256 "0000000000000000000000000000000000000000000000000000000000000000"
       end
     end
   end
-
-  depends_on "vfkit"
 
   resource "git-remote-isx" do
     url "https://github.com/Sanne/incus-spawn/releases/download/v0.2.21/git-remote-isx"
